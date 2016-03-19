@@ -1,0 +1,20 @@
+In this folder there is a Matlab script that can plot the data
+gathered by the Disim simulator.
+
+To use it, simply start Matlab and type:
+
+> plot_recorded_data('my_speed_sensor.txt', 'v');
+> plot_recorded_data('my_density_sensor.txt', 'k');
+> plot_recorded_data('my_flow_sensor.txt', 'f');
+
+Notice that the speed sensor also outputs the standard deviation
+whereas the other ones do not (it makes no sense for them). This
+allows one to convert between time mean speed (the one that is
+logged) and space mean speed:
+
+vs = vt/2 + sqrt(vt^2/4 - sigma_t^2)
+
+The script can also be called with 's', to display the converted
+space mean speed:
+
+> plot_recorded_data('my_speed_sensor.txt', 's');

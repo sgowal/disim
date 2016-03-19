@@ -1,0 +1,12 @@
+# If 1, the FLTK libraries are installed on this computer
+FLTK_PRESENT = 1
+# If 1, gengetopt is installed on this computer
+GENGETOPT_PRESENT = 1
+# If 1, liblua5.1 is installed on this computer
+LUA_PRESENT = 1
+# If 32 compiles for 32-bits, if 64 compiles for 64-bits
+ARCH = 64
+# If 1 compiles the graphical interface
+GUI = 1
+# If 1 allows the control vehicles using LUA scripting
+LUA = 1

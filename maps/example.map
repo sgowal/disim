@@ -1,0 +1,26 @@
+$NAME,An example
+
+$SEGMENT,circular,50,90
+$TYPE,entry,left
+$SPEED,120
+$NUM_LANES,0,2
+$LANE,0,2000
+$LANE,1,2000
+
+$SEGMENT,straight,100
+$NUM_LANES,2
+
+$SEGMENT,circular,50,-180
+$TYPE,entry,left
+$NUM_LANES,2,1
+$LANE,0,2000
+$RIGHT_MARKING,0,0,90,solid
+$LEFT_MARKING,1,0,90,solid
+$TRAFFIC_LIGHT,rampmeter,0,90
+
+$SEGMENT,straight,100
+$TYPE,exit
+$NUM_LANES,0,2
+$DENSITY_SENSOR,densitysensor1,0,10,50,nolog
+$DENSITY_SENSOR,densitysensor2,1,10,50,nolog
+

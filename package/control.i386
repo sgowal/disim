@@ -1,0 +1,9 @@
+Package: disim
+Version: 1.0-0
+Section: Miscellaneous
+Priority: optional
+Architecture: i386
+Depends: libgl1-mesa-glx, libglu1-mesa, freeglut3, libfltk1.1, liblua5.1-0, libpng12-0
+Maintainer: Sven Gowal <svenadrian.gowal@epfl.ch>
+Description: Highway Simulator
+ Disim is a lightweight highway simulator that enables you to emulate a complete traffic over several kilometers. You can define your own road network and change the different entry rates and road conditions. Disim also offers the possiblity to add road sensors to measure the density, speed and traffic flow and log this data. We think of Disim as being an educational software that enables users to test and try out quickly different driver behaviors using the LUA scripting language.

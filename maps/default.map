@@ -1,0 +1,73 @@
+# Header: name and lane width
+# ---------------------------
+
+$NAME,The default map
+$LANE_WIDTH,3.5
+
+# Road description (segment per segment)
+# --------------------------------------
+#
+# The highways are mainly composed of 2 types
+# of segments: straight lines and circular curves.
+# Each segment contains a specific number of lanes and speed.
+# Each segment can be a left/right exit/entry.
+# Each entry lane has an entry rate.
+# Format:
+#   $SEGMENT,[straight/circular],[length/radius in m]{,[angle span in degrees, it can be negative]}
+#   {$TYPE,[entry/exit/none]{,[left/right]}}
+#   {$SPEED,[speed in km-h]}
+#   $NUM_LANES,[number of kept lanes]{,[number of new entry/exit lanes]}
+#   {$LANE,[lane id 0:left-most, 1, 2],[entry rate veh-hr]{,[name]}}
+#   {$LEFT_MARKING,[lane id 0:left-most, 1, 2],[from position in m/degrees],[to position in m/rad],[broken/solid]}
+#   {$RIGHT_MARKING,[lane id 0:left-most, 1, 2],[from position in m/degrees],[to position in m/rad],[broken/solid]}
+#   {$DENSITY_SENSOR,[name],[lane id 0:left-most, 1, 2],[first loop detector position in m/degrees],[second loop detector position in m/degrees]{,[log/nolog]}}
+#   {$SPEED_SENSOR,[name],[lane id 0:left-most, 1, 2],[loop detector position in m/degrees]{,[log/nolog]}}
+#   {$FLOW_SENSOR,[name],[lane id 0:left-most, 1, 2],[loop detector position in m/degrees]{,[log/nolog]}}
+#   {$TRAFFIC_LIGHT,[name],[lane id 0:left-most, 1, 2],[position in m/degrees]}
+#   {$SPEED_LIMIT,[name],[lane id 0:left-most, 1, 2],[position in m/degrees]}
+#
+#   {$CLOSE_THE_LOOP}
+
+$SEGMENT,straight,500
+$TYPE,entry
+$SPEED,120
+$NUM_LANES,0,3
+$LANE,0,2000,entry
+$LANE,1,2000,entry
+$LANE,2,2000,entry
+$SPEED_SENSOR,speed_entry_0,0,50,nolog
+$FLOW_SENSOR,flow_entry_0,0,50,nolog
+$SPEED_SENSOR,speed_entry_1,1,50,nolog
+$FLOW_SENSOR,flow_entry_1,1,50,nolog
+$SPEED_SENSOR,speed_entry_2,2,50,nolog
+$FLOW_SENSOR,flow_entry_2,2,50,nolog
+$SPEED_LIMIT,speedlimit,1,50
+
+$SEGMENT,straight,500
+$TYPE,exit,left
+$NUM_LANES,2,1
+
+$SEGMENT,circular,500,90
+$NUM_LANES,2
+$SPEED_LIMIT,x,0,5
+
+$SEGMENT,circular,200,-90
+$TYPE,entry
+$NUM_LANES,2,2
+$LANE,2,1000
+$LANE,3,1000,rampmeter_entry
+$RIGHT_MARKING,2,0,30,solid
+$LEFT_MARKING,3,0,30,solid
+$DENSITY_SENSOR,density,1,20,70
+$SPEED_SENSOR,speed,1,45
+$FLOW_SENSOR,flow,1,45
+$TRAFFIC_LIGHT,rampmeter,3,30
+
+$SEGMENT,straight,200
+$TYPE,none,left
+$NUM_LANES,3
+
+$SEGMENT,straight,500
+$TYPE,exit,right
+$NUM_LANES,0,2
+

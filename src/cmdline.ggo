@@ -1,0 +1,24 @@
+package "Disim"
+version "1.0-0"   # don't use version if you're using automake
+purpose "Simulates a complete highway traffic."
+     
+# Options
+option "log" - "Log file" string default="logs/log.txt" optional argoptional
+option "record-path" - "Which path to store the data to" string default="logs/" optional
+option "record" - "Whether to record data" int default="1" optional argoptional
+option "verbose-level" v "Verbose level" int default="4" optional
+option "map" m "Map file" string default="./maps/default.map" optional
+option "duration" d "Duration of the experiment in seconds" int default="0" optional
+option "fast" - "Whether to start the simulation in fast mode" int default="1" optional argoptional
+option "pause" - "Whether to start the simulation in pause mode" int default="1" optional argoptional
+option "nogui" - "Whether to display the GUI" int default="1" optional argoptional
+option "density" - "Initial density of cars at startup in veh/km" int default="0" optional
+option "truck" - "Proportion of trucks at all times" double default="0.1" optional
+option "weather" - "The weather conditions. Either nice, rain, fog or rain+fog" string default="nice" optional
+option "time-step" - "The largest time-step in seconds" double default="0.064" optional
+option "lua" - "The LUA script to be executed as the car controller" string default="./scripts/car/default.lua" optional
+option "luacontrol" - "The LUA script to be executed as the infrastructure controller" string default="./scripts/control/example.lua" optional
+option "ncpu" - "The number of cores on your computer" int default="0" optional
+option "start-time" - "The starting hour in hh:mm (this only affects the display" string default="00:00" optional
+option "lua-args" - "The arguments to the car controller LUA script" string default="" optional
+option "exe-path" - "This commandline argument is overwritten at runtime (do not use)" string optional argoptional

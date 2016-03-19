@@ -1,0 +1,53 @@
+glc-capture is a program that allows you to capture an OpenGL screen.
+It might be useful to use it to capture your simulation and show a video of your cars behavior.
+
+Here is how to install it on Ubuntu:
+
+> sudo apt-get install build-essential cmake libx11-dev libxxf86vm-dev libgl1-mesa-dev libasound2-dev libpng12-dev ffmpeg
+
+(For 64 bits version of Ubuntu)
+> sudo apt-get install gcc-multilib
+> sudo ln -s /usr/lib32/libGL.so.1 /usr/lib32/libGL.so
+> sudo ln -s /usr/lib32/libasound.so.2 /usr/lib32/libasound.so
+> sudo ln -s /usr/lib32/libXxf86vm.so.1 /usr/lib32/libXxf86vm.so
+> sudo ln -s /usr/lib32/libX11.so.6 /usr/lib32/libX11.so
+> sudo ln -s /usr/lib32/libpng12.so.0 /usr/lib32/libpng.so
+
+Download glc and compile it:
+
+> wget http://nullkey.ath.cx/glc/scripts/glc-build.sh
+> chmod a+x glc-build.sh
+> sudo ./glc-build.sh
+
+Then specify as installation folder [/usr/].
+And refuse to use git [n].
+
+If at any point you decide to remove glc-capture, you can type:
+
+> sudo rm \
+/usr/lib64/libglc-core.so* \
+/usr/lib64/libglc-capture.so* \
+/usr/lib64/libglc-play.so* \
+/usr/lib64/libglc-export.so* \
+/usr/lib64/libglc-hook.so* \
+/usr/lib64/libelfhacks.so* \
+/usr/lib64/libpacketstream.so* \
+/usr/lib64/libelfhacks.so* \
+/usr/lib32/libglc-core.so* \
+/usr/lib32/libglc-capture.so* \
+/usr/lib32/libglc-play.so* \
+/usr/lib32/libglc-export.so* \
+/usr/lib32/libglc-hook.so* \
+/usr/lib32/libelfhacks.so* \
+/usr/lib32/libpacketstream.so* \
+/usr/include/elfhacks.h \
+/usr/include/packetstream.h \
+/usr/bin/glc-capture \
+/usr/bin/glc-play
+
+To use it:
+
+> glc-capture ./disim
+Press Shift+F8 to start/stop recording
+> glc-play [SIM].glc -o - -y 1 | ffmpeg -i - -an -vcodec libx264 -crf 22 -threads 0 sim_video.mp4
+
