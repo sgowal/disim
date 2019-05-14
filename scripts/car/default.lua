@@ -28,7 +28,7 @@ The LUA API is documented at: http://en.wikibooks.org/wiki/Disim_Highway_Simulat
 vars = {}
 
 function printf(...)
-  io.write(string.format(unpack(arg)))
+  io.stdout:write(string.format(...))
 end
 
 function init(self, options)

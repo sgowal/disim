@@ -28,7 +28,7 @@ ramp_entry = nil
 speed_limit = nil
 
 function printf(...)
-  io.write(string.format(unpack(arg)))
+  io.stdout:write(string.format(...))
 end
 
 function init(self)

@@ -24,7 +24,7 @@ The LUA API is documented at: http://en.wikibooks.org/wiki/Disim_Highway_Simulat
 --]]
 
 verbose = false
-rampcontrol = 5
+rampcontrol = 0
 rampstocontrol = {'myrtle', 'huntington', 'santa_anita_1', 'santa_anita_2', 'baldwin_1', 'baldwin_2'}
 nlanes = {4, 4, 4, 4, 4, 4}
 criticaldensity     = {27.16, 27.16, 27.16, 27.16, 27.16, 27.16}
@@ -46,7 +46,7 @@ previoustime = "xx:xx"
 previousrampcontroltime = 1
 
 function printf(...)
-  io.stdout:write(string.format(unpack(arg)))
+  io.stdout:write(string.format(...))
 end
 
 function init(self)
@@ -109,7 +109,7 @@ function init(self)
               nl = nl + 1
               -- date time data1 data2 ... datan data nlanes observed
               nums = {}
-              for n in line:gfind("%d+%.?%d*") do
+              for n in line:gmatch("%d+%.?%d*") do
                 table.insert(nums, n)
               end
               local nlanes = nums[#nums-1]
@@ -131,8 +131,10 @@ function init(self)
         else
           if (t == 2) then
             printf(string.rep(" ",40));
+            printf("[SKIP]\n")
+          else
+            printf("[FAIL]\n")
           end
-          printf("[FAIL]\n")
         end
       end
     else
@@ -150,7 +152,7 @@ function update(self, t, dt)
        3) ALINEA + Queue Control via number of vehicles               (controlling the queue time)
        4) ALINEA + Queue Control via number of vehicles               (controlling the queue length)
        5) Coordinated ALINEA + Queue Control (queue time)
-       5) Coordinated ALINEA + Queue Control (queue length)
+       6) Coordinated ALINEA + Queue Control (queue length)
   --]]
 
   if (rampcontrol > 0) then
@@ -273,5 +275,5 @@ function update(self, t, dt)
 end
 
 function destroy(self)
-  
+
 end

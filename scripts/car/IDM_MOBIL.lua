@@ -7,7 +7,7 @@ http://www.vwi.tu-dresden.de/~treiber/
 vars = {}
 
 function printf(...)
-  io.write(string.format(unpack(arg)))
+  io.stdout:write(string.format(...))
 end
 
 --[[
@@ -307,7 +307,7 @@ function LuaLane:getLengthLeft(car)
   -- Is the lane ending?
   if (self:getMergeDirection() ~= 0) then
     ok = true
-    -- Final position of the lane  
+    -- Final position of the lane
     if (self:getGeometry() == CIRCULAR) then
       pf = math.abs(self:getAngleSpan())
     else
